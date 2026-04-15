@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IoWLH Module | The Three Pillars of Divination</title>
+  <meta name="description" content="IoWLH learning module: The Three Pillars of Divination, integrating Know Thyself, Cleanse and Purify, and Living in Alignment with Absolute Truth." />
+  <style>
+    :root{
+      --bg:#07080c;
+      --bg2:#0f131b;
+      --panel:#151a24;
+      --panel2:#1b2230;
+      --text:#f4efe4;
+      --muted:#c5bda9;
+      --gold:#d4af37;
+      --gold-soft:#f0d67a;
+      --blue:#7ba7ff;
+      --blue-soft:#c5d7ff;
+      --line:rgba(212,175,55,.28);
+      --shadow:0 12px 40px rgba(0,0,0,.35);
+      --radius:22px;
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family: Georgia, "Times New Roman", serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(123,167,255,.13), transparent 28%),
+        radial-gradient(circle at top right, rgba(212,175,55,.10), transparent 24%),
+        linear-gradient(180deg, #05060a 0%, #0a0d14 44%, #0b0f16 100%);
+      line-height:1.65;
+    }
+
+    a{color:var(--gold-soft); text-decoration:none}
+    a:hover{color:#fff}
+
+    .wrap{
+      width:min(var(--max), calc(100% - 32px));
+      margin:0 auto;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:20;
+      backdrop-filter:blur(10px);
+      background:rgba(7,8,12,.72);
+      border-bottom:1px solid rgba(212,175,55,.16);
+    }
+
+    .topbar-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      padding:12px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-size:.98rem;
+      letter-spacing:.04em;
+    }
+
+    .brand-badge{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(212,175,55,.34);
+      background:linear-gradient(180deg, rgba(212,175,55,.18), rgba(123,167,255,.12));
+      color:var(--gold-soft);
+      font-weight:bold;
+      box-shadow:var(--shadow);
+    }
+
+    .brand small{
+      display:block;
+      color:var(--muted);
+      font-size:.74rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .nav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .nav a{
+      border:1px solid rgba(212,175,55,.18);
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+      padding:8px 14px;
+      border-radius:999px;
+      font-size:.9rem;
+      transition:.25s ease;
+    }
+
+    .nav a:hover{
+      color:#fff;
+      border-color:rgba(212,175,55,.42);
+      box-shadow:0 0 0 1px rgba(212,175,55,.08) inset, 0 8px 20px rgba(0,0,0,.25);
+      transform:translateY(-1px);
+    }
+
+    .hero{
+      padding:72px 0 36px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:24px;
+      align-items:stretch;
+    }
+
+    .hero-card,
+    .panel{
+      background:linear-gradient(180deg, rgba(21,26,36,.95), rgba(14,18,25,.94));
+      border:1px solid rgba(212,175,55,.16);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .hero-card{
+      padding:34px 28px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:-1px auto auto -1px;
+      width:220px;
+      height:220px;
+      background:radial-gradient(circle, rgba(212,175,55,.18), transparent 66%);
+      pointer-events:none;
+    }
+
+    .eyebrow{
+      color:var(--gold-soft);
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-size:.78rem;
+      margin-bottom:10px;
+    }
+
+    h1,h2,h3,h4{
+      margin:0 0 12px;
+      line-height:1.2;
+      font-weight:600;
+    }
+
+    h1{
+      font-size:clamp(2rem, 5vw, 3.5rem);
+      max-width:11ch;
+    }
+
+    h2{
+      font-size:clamp(1.5rem, 3.2vw, 2.2rem);
+      color:var(--gold-soft);
+    }
+
+    h3{
+      font-size:1.22rem;
+      color:#fff;
+    }
+
+    p{margin:0 0 14px}
+    .lead{
+      font-size:1.06rem;
+      color:var(--blue-soft);
+      max-width:62ch;
+    }
+
+    .hero-notes{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:12px;
+      margin-top:24px;
+    }
+
+    .note{
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(123,167,255,.16);
+      border-radius:18px;
+      padding:14px 12px;
+    }
+
+    .note strong{
+      display:block;
+      color:var(--gold-soft);
+      margin-bottom:4px;
+      font-size:.95rem;
+    }
+
+    .side-card{
+      padding:24px 20px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .mini-title{
+      font-size:.82rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--gold-soft);
+      margin-bottom:8px;
+    }
+
+    .list-clean{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+    }
+
+    .list-clean li{margin:0 0 8px}
+
+    .ack{
+      border-top:1px solid rgba(212,175,55,.16);
+      padding-top:16px;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .section{
+      padding:24px 0 12px;
+    }
+
+    .section .panel{
+      padding:28px 24px;
+      margin-bottom:22px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+    }
+
+    .pillar{
+      padding:22px 18px;
+      border-radius:20px;
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border:1px solid rgba(212,175,55,.14);
+      min-height:100%;
+    }
+
+    .pillar .num{
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(212,175,55,.3);
+      color:var(--gold-soft);
+      margin-bottom:12px;
+      font-weight:bold;
+    }
+
+    .pillars-link{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+      margin-top:14px;
+    }
+
+    .linkbox{
+      border-radius:20px;
+      padding:18px;
+      background:rgba(123,167,255,.06);
+      border:1px solid rgba(123,167,255,.18);
+    }
+
+    .linkbox strong{
+      color:#fff;
+      display:block;
+      margin-bottom:6px;
+    }
+
+    .response-flow{
+      display:grid;
+      grid-template-columns:1fr auto 1fr auto 1fr;
+      align-items:center;
+      gap:12px;
+      text-align:center;
+      margin:18px 0 10px;
+    }
+
+    .flow-node{
+      padding:16px 12px;
+      border-radius:18px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(212,175,55,.16);
+    }
+
+    .arrow{
+      color:var(--gold-soft);
+      font-size:1.6rem;
+      opacity:.85;
+    }
+
+    .possibility-grid{
+      display:grid;
+      grid-template-columns:repeat(5, 1fr);
+      gap:14px;
+    }
+
+    .possibility{
+      border-radius:18px;
+      padding:16px 14px;
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border:1px solid rgba(212,175,55,.12);
+    }
+
+    .possibility .open{
+      display:inline-block;
+      font-size:.76rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:var(--gold-soft);
+      margin-bottom:6px;
+    }
+
+    .possibility h4{
+      font-size:1.05rem;
+      margin-bottom:8px;
+      color:#fff;
+    }
+
+    .map{
+      display:grid;
+      grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;
+      gap:10px;
+      align-items:center;
+      text-align:center;
+      margin-top:10px;
+    }
+
+    .map .box{
+      padding:16px 12px;
+      border-radius:18px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(212,175,55,.16);
+    }
+
+    .questions ol,
+    .assignment ol{
+      margin:10px 0 0;
+      padding-left:22px;
+    }
+
+    .questions li,
+    .assignment li{
+      margin:0 0 10px;
+      color:var(--muted);
+    }
+
+    .closing{
+      text-align:center;
+      padding:10px 0 48px;
+    }
+
+    .closing .panel{
+      padding:32px 24px;
+    }
+
+    .seal{
+      margin:0 auto 16px;
+      width:70px;
+      height:70px;
+      border-radius:50%;
+      border:1px solid rgba(212,175,55,.28);
+      display:grid;
+      place-items:center;
+      color:var(--gold-soft);
+      background:radial-gradient(circle, rgba(212,175,55,.14), rgba(123,167,255,.08));
+      font-size:1.2rem;
+      box-shadow:var(--shadow);
+    }
+
+    .muted{color:var(--muted)}
+    .gold{color:var(--gold-soft)}
+
+    @media (max-width: 980px){
+      .hero-grid,
+      .grid-3,
+      .pillars-link,
+      .possibility-grid{
+        grid-template-columns:1fr;
+      }
+
+      .response-flow,
+      .map{
+        grid-template-columns:1fr;
+      }
+
+      .arrow{
+        transform:rotate(90deg);
+        margin:2px 0;
+      }
+
+      .hero-notes{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 640px){
+      .topbar-inner{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .hero{
+        padding-top:40px;
+      }
+
+      .hero-card,
+      .side-card,
+      .section .panel,
+      .closing .panel{
+        padding:22px 18px;
+      }
+
+      .wrap{
+        width:min(var(--max), calc(100% - 20px));
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <div class="brand-badge">3</div>
+        <div>
+          <strong>IoWLH Learning Module</strong>
+          <small>The Three Pillars of Divination</small>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="#overview">Overview</a>
+        <a href="#pillars">Pillars</a>
+        <a href="#responses">Responses</a>
+        <a href="#possibilities">Possibilities</a>
+        <a href="#assignment">Assignment</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-card">
+          <div class="eyebrow">IoWLH Module</div>
+          <h1>The Three Pillars of Divination</h1>
+          <p class="lead">
+            This lesson interprets the divinatory structure shown in the image through an IoWLH teaching lens:
+            three pillars, three fundamental responses, five possibilities, and the unfolding into the deeper body of Odu.
+          </p>
+
+          <div class="hero-notes">
+            <div class="note">
+              <strong>Pillar 1</strong>
+              Know Thyself
+            </div>
+            <div class="note">
+              <strong>Pillar 2</strong>
+              Cleanse and Purify
+            </div>
+            <div class="note">
+              <strong>Pillar 3</strong>
+              Living in Alignment with Absolute Truth
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card side-card">
+          <div>
+            <div class="mini-title">Module Focus</div>
+            <ul class="list-clean">
+              <li>Interpret the image as a formal teaching module</li>
+              <li>Connect the responses Yes, No, and Definitely to the IoWLH pillars</li>
+              <li>Show how the five possibilities prepare the mind for deeper Odu study</li>
+              <li>Frame divination as consciousness, discipline, and alignment</li>
+            </ul>
+          </div>
+
+          <div class="ack">
+            <strong class="gold">Acknowledgement:</strong>
+            This module is presented in an <strong>IoWLH</strong> framework with a respectful minor acknowledgement that related instructional streams may also be appreciated within the broader spiritual work of <strong>SGI</strong>.
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="overview" class="section">
+      <div class="wrap">
+        <div class="panel">
+          <h2>Module Overview</h2>
+          <p>
+            Divination is not merely the receiving of answers. It is the disciplined unfolding of truth through a prepared vessel.
+            The image suggests a simple but powerful progression:
+          </p>
+          <div class="map">
+            <div class="box"><strong>3 Pillars</strong></div>
+            <div class="arrow">→</div>
+            <div class="box"><strong>3 Responses</strong></div>
+            <div class="arrow">→</div>
+            <div class="box"><strong>5 Possibilities</strong></div>
+            <div class="arrow">→</div>
+            <div class="box"><strong>Odu Unfolding</strong></div>
+          </div>
+          <p style="margin-top:16px">
+            In this module, the student learns that divinatory clarity begins with inner formation. One must know oneself,
+            remove distortion, and stand in readiness to align with truth. Only then can responses be heard correctly,
+            possibilities be interpreted wisely, and Odu be received with maturity.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pillars" class="section">
+      <div class="wrap">
+        <div class="panel">
+          <h2>The Three IoWLH Pillars</h2>
+          <div class="grid-3">
+            <article class="pillar">
+              <div class="num">1</div>
+              <h3>Know Thyself</h3>
+              <p>
+                Before a reading can be trusted, the reader and seeker must become aware of self. This includes motives,
+                emotional state, fear, desire, memory, projection, and expectation.
+              </p>
+              <p>
+                Self-knowledge is the first purification of perception. Without it, divination may be bent toward preference
+                rather than truth.
+              </p>
+            </article>
+
+            <article class="pillar">
+              <div class="num">2</div>
+              <h3>Cleanse and Purify</h3>
+              <p>
+                Purification is the work of removing what clouds the channel. Agitation, confusion, resentment,
+                impurity of intent, and spiritual heaviness all interfere with accurate interpretation.
+              </p>
+              <p>
+                To cleanse and purify is not to become perfect. It is to become properly prepared.
+              </p>
+            </article>
+
+            <article class="pillar">
+              <div class="num">3</div>
+              <h3>Living in Alignment with Absolute Truth</h3>
+              <p>
+                The highest aim of divination is not curiosity. It is alignment. The seeker must be willing to obey,
+                adjust, and live according to what is revealed.
+              </p>
+              <p>
+                Truth has little value when it is heard but not lived.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="responses" class="section">
+      <div class="wrap">
+        <div class="panel">
+          <h2>The Three Fundamental Responses</h2>
+          <p>
+            The image identifies three basic divinatory responses:
+            <strong>Yes</strong>, <strong>No</strong>, and <strong>Definitely</strong>.
+            In this module, these are understood not only as answers, but as spiritual states linked to the IoWLH pillars.
+          </p>
+
+          <div class="response-flow">
+            <div class="flow-node">
+              <h3>Yes</h3>
+              <p class="muted">Opening, recognition, awareness</p>
+            </div>
+            <div class="arrow">→</div>
+            <div class="flow-node">
+              <h3>No</h3>
+              <p class="muted">Warning, restraint, correction</p>
+            </div>
+            <div class="arrow">→</div>
+            <div class="flow-node">
+              <h3>Definitely</h3>
+              <p class="muted">Certainty, stability, alignment</p>
+            </div>
+          </div>
+
+          <div class="pillars-link">
+            <div class="linkbox">
+              <strong>Yes → Know Thyself</strong>
+              “Yes” is the opening of consciousness. It suggests recognition, awareness, and the first moment of truthful seeing.
+            </div>
+            <div class="linkbox">
+              <strong>No → Cleanse and Purify</strong>
+              “No” often teaches more than denial. It points to what must be corrected, refined, or cleared before movement.
+            </div>
+            <div class="linkbox">
+              <strong>Definitely → Alignment with Absolute Truth</strong>
+              “Definitely” is firm confirmation. It reflects grounded truth, balance, and clear agreement with divine order.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="possibilities" class="section">
+      <div class="wrap">
+        <div class="panel">
+          <h2>The Five Possibilities</h2>
+          <p>
+            From the three basic responses, the divinatory field expands into five possibilities associated with the shell pattern.
+            These provide nuance, movement, and interpretive depth.
+          </p>
+
+          <div class="possibility-grid" style="margin-top:18px">
+            <article class="possibility">
+              <span class="open">4 Open</span>
+              <h4>Alafia</h4>
+              <p>
+                Peace, blessing, openness, favorable movement. Often expresses a strong yes, though sometimes still requiring context.
+              </p>
+            </article>
+
+            <article class="possibility">
+              <span class="open">3 Open</span>
+              <h4>Etawa</h4>
+              <p>
+                Qualified yes. Openness with condition. Progress is possible, but awareness and refinement are still needed.
+              </p>
+            </article>
+
+            <article class="possibility">
+              <span class="open">2 Open</span>
+              <h4>Ejife</h4>
+              <p>
+                Balance, agreement, stability, centered truth. Often read as strong confirmation and reliable support.
+              </p>
+            </article>
+
+            <article class="possibility">
+              <span class="open">1 Open</span>
+              <h4>Okana</h4>
+              <p>
+                Warning, uncertainty, resistance, delay, reconsideration. The matter is not yet clear or ready.
+              </p>
+            </article>
+
+            <article class="possibility">
+              <span class="open">0 Open</span>
+              <h4>Oyeku</h4>
+              <p>
+                Closure, denial, inwardness, deep no. Sometimes a withdrawal, sometimes a summons to introspection.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Reading the Five Possibilities Through the Pillars</h2>
+          <div class="grid-3">
+            <article class="pillar">
+              <h3>Know Thyself</h3>
+              <p>
+                Most strongly reflected in <strong>Alafia</strong> as opening and recognition, and at times in <strong>Oyeku</strong> when the reading requires honest inward examination.
+              </p>
+            </article>
+
+            <article class="pillar">
+              <h3>Cleanse and Purify</h3>
+              <p>
+                Strongly reflected in <strong>Etawa</strong>, <strong>Okana</strong>, and sometimes <strong>Oyeku</strong>, where refinement, caution, or spiritual clearing is needed.
+              </p>
+            </article>
+
+            <article class="pillar">
+              <h3>Alignment with Absolute Truth</h3>
+              <p>
+                Most clearly reflected in <strong>Ejife</strong>, where balance, certainty, agreement, and stable truth are present.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="panel">
+          <h2>From Responses to Odu</h2>
+          <p>
+            The five possibilities are not the end of the process. They are the gate.
+            Once the field of response has been identified, the student enters deeper study and interpretation through the body of Odu.
+          </p>
+
+          <div class="map" style="margin-top:18px">
+            <div class="box"><strong>3 Responses</strong></div>
+            <div class="arrow">→</div>
+            <div class="box"><strong>5 Possibilities</strong></div>
+            <div class="arrow">→</div>
+            <div class="box"><strong>16 Major Odu</strong></div>
+            <div class="arrow">→</div>
+            <div class="box"><strong>256 Odu</strong></div>
+          </div>
+
+          <p style="margin-top:16px">
+            In this way, divination begins with broad principle and unfolds into pattern, story, teaching, remedy, and responsibility.
+            The answer is first heard as signal, then interpreted as structure, then lived as wisdom.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section questions">
+      <div class="wrap">
+        <div class="panel">
+          <h2>Discussion Questions</h2>
+          <ol>
+            <li>Why must self-knowledge come before interpretation?</li>
+            <li>How does purification change the quality of a reading?</li>
+            <li>Why is “Definitely” different from a simple “Yes”?</li>
+            <li>Which of the five possibilities best expresses stable truth, and why?</li>
+            <li>How can a divinatory “No” be understood as guidance rather than rejection?</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="assignment" class="section assignment">
+      <div class="wrap">
+        <div class="panel">
+          <h2>Practice Reflection and Assignment</h2>
+          <h3>Reflection Practice</h3>
+          <p>
+            Take one real question from your life. Sit quietly and reflect through the three pillars before seeking an answer.
+          </p>
+          <ol>
+            <li><strong>Know Thyself:</strong> What bias, desire, fear, or expectation might be influencing your interpretation?</li>
+            <li><strong>Cleanse and Purify:</strong> What in your thought, emotion, conduct, or environment needs to be cleared?</li>
+            <li><strong>Living in Alignment with Absolute Truth:</strong> What truth must you be willing to accept and obey?</li>
+          </ol>
+
+          <h3 style="margin-top:22px">Written Assignment</h3>
+          <p>
+            Write a short response titled:
+            <strong class="gold">“How the Three Pillars Prepare a Person for Divination.”</strong>
+          </p>
+          <ol>
+            <li>Define each pillar in your own words.</li>
+            <li>Explain how each pillar relates to Yes, No, and Definitely.</li>
+            <li>Briefly describe the five possibilities and their spiritual value.</li>
+            <li>Conclude with one paragraph on how divination helps shape reality through truth and alignment.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="wrap">
+        <div class="panel">
+          <div class="seal">◎</div>
+          <h2>Closing Insight</h2>
+          <p>
+            Divination does not begin with shells alone. It begins with the condition of the person who approaches the oracle.
+          </p>
+          <p>
+            To <strong>Know Thyself</strong> is to become honest.<br>
+            To <strong>Cleanse and Purify</strong> is to become clear.<br>
+            To <strong>Live in Alignment with Absolute Truth</strong> is to become ready.
+          </p>
+          <p>
+            Then the answers can be heard. Then the possibilities can be weighed. Then Odu can be received not merely as information,
+            but as wisdom.
+          </p>
+          <p class="muted" style="margin-top:18px">
+            IoWLH instructional presentation with a respectful light acknowledgement of related SGI learning streams.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
